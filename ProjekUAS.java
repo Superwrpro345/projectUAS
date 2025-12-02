@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class ProjekUAS {
 
     static Scanner key = new Scanner(System.in);
-
+        static ArrayList<String> playlist = new ArrayList<>();
+        static ArrayList<String> musik = new ArrayList<>();
+        static ArrayList<ArrayList<Integer>> playlistLagu = new ArrayList<>();
+    
     public static void main(String[] args) {
-        ArrayList<String> playlist = new ArrayList<>();
-        ArrayList<String> musik = new ArrayList<>();
-        ArrayList<ArrayList<Integer>> playlistLagu = new ArrayList<>();
         int pilihan = 0;
         boolean keluar = false;
         do {
@@ -178,4 +178,7 @@ public class ProjekUAS {
         } while (!keluar);
         key.close();
     }
+
+
+    static void 
 }
