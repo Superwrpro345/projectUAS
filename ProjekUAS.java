@@ -140,7 +140,7 @@ public class ProjekUAS {
         }
 
         if (playlistLagu.get(idxPlaylist).contains(pilihmusik)) {
-            System.out.println("Sudah ada musik yang ingin ditambahkan dalam playlist tersebut");
+            System.out.println("Musik yang ingin ditambahkan sudah ada dalam playlist tersebut");
         }
 
         playlistLagu.get(idxPlaylist).add(pilihmusik);
