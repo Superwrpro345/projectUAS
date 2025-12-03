@@ -12,31 +12,30 @@ public class ProjekUAS {
     static boolean keluar = false;
 
     public static void main(String[] args) {
+
         do {
             main_Interface();
-            if (!key.hasNextInt()) {
-                System.out.println("Input tidak valid. Silakan masukkan angka antara 1-10.");
-                key.nextInt();
-                continue;
-            } else {
-                pilihan = key.nextInt();
+            while (!key.hasNextInt()) {
+                System.out.println("Invalid input! Please enter a number.");
                 key.nextLine();
+                System.out.print("Please re-enter your choice: ");
             }
-            do {
-                switch (pilihan) {
-                    case 1 -> tambah_playlist();
-                    case 2 -> lihat_daftar_playlist();
-                    case 3 -> hapus_playlist();
-                    case 4 -> cari_playlist();
-                    case 5 -> tambah_musik_ke_playlist();
-                    case 6 -> hapus_musik_dari_playlist();
-                    case 7 -> display_daftar_musik();
-                    case 8 -> tambah_musik();
-                    case 9 -> hapus_musik();
-                    case 10 -> keluar_program();
-                    default -> System.out.println("Masukkan Input yang valid");
-                }
-            } while (pilihan < 1 && pilihan > 10);
+            pilihan = key.nextInt();
+            key.nextLine();
+            switch (pilihan) {
+                case 1 -> tambah_playlist();
+                case 2 -> lihat_daftar_playlist();
+                case 3 -> hapus_playlist();
+                case 4 -> cari_playlist();
+                case 5 -> tambah_musik_ke_playlist();
+                case 6 -> hapus_musik_dari_playlist();
+                case 7 -> display_daftar_musik();
+                case 8 -> tambah_musik();
+                case 9 -> hapus_musik();
+                case 10 -> keluar_program();
+                default -> System.out.print("input salah. Silahkan Masukkan angka antara 1-10");
+            }
+
         } while (!keluar);
         key.close();
     }
@@ -90,8 +89,7 @@ public class ProjekUAS {
 
     static void cari_playlist() {
         System.out.print("Cari playlist lagu: ");
-        String cariplaylist = key
-                .nextLine();
+        String cariplaylist = key.nextLine();
         boolean temuplaylist = false;
         for (int i = 0; i < playlist.size(); i++) {
             if (playlist.get(i).toLowerCase().contains(cariplaylist.toLowerCase())) {
@@ -105,8 +103,8 @@ public class ProjekUAS {
                     if (daftar.isEmpty()) {
                         System.out.println("Belum ada musik");
                     } else {
-                        for (Integer idx : daftar) {
-                            System.out.println((i + 1) + ". " + musik.get(idx));
+                        for (int c = 0; c < daftar.size(); c++) {
+                            System.out.println((c + 1) + ". " + musik.get(c));
                         }
                     }
                 }
