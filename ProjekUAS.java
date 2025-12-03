@@ -16,7 +16,7 @@ public class ProjekUAS {
         do {
             main_Interface();
             while (!key.hasNextInt()) {
-                System.out.println("Invalid input! Please enter a number.");
+                System.out.println("Input Invalid! Silahkan Masukkan Angka");
                 key.nextLine();
                 System.out.print("Silahkan Masukkan input yang valid: ");
             }
