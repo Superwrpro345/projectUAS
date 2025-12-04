@@ -16,9 +16,9 @@ public class ProjekUAS {
         do {
             main_Interface();
             while (!key.hasNextInt()) {
-                System.out.println("Invalid input! Please enter a number.");
+                System.out.println("Input Invalid! Silahkan Masukkan Angka");
                 key.nextLine();
-                System.out.print("Please re-enter your choice: ");
+                System.out.print("Silahkan Masukkan input yang valid: ");
             }
             pilihan = key.nextInt();
             key.nextLine();
@@ -140,7 +140,7 @@ public class ProjekUAS {
         }
 
         if (playlistLagu.get(idxPlaylist).contains(pilihmusik)) {
-            System.out.println("Sudah ada musik yang ingin ditambahkan dalam playlist tersebut");
+            System.out.println("Musik yang ingin ditambahkan sudah ada dalam playlist tersebut");
         }
 
         playlistLagu.get(idxPlaylist).add(pilihmusik);
