@@ -93,7 +93,8 @@ public class ProjekUAS {
             }
             int delMusika = key.nextInt() - 1;
             key.nextLine();
-            if (delMusika >= 0 && delMusika < playlist.size()) {
+            if (delMusika >= 1 && delMusika < playlist.size()) {
+                playlistLagu.remove(delMusika);
                 playlist.remove(delMusika);
                 System.out.println("playlist berhasil dihapus.");
             } else {
