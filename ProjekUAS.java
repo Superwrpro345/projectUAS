@@ -91,11 +91,11 @@ public class ProjekUAS {
                 key.nextLine();
                 System.out.print("Silahkan Masukkan nomor playlist yang ingin dihapus: ");
             }
-            int delMusika = key.nextInt() - 1;
+            int delMusika = key.nextInt();
             key.nextLine();
             if (delMusika >= 1 && delMusika < playlist.size()) {
-                playlistLagu.remove(delMusika);
-                playlist.remove(delMusika);
+                playlistLagu.remove(delMusika - 1);
+                playlist.remove(delMusika - 1);
                 System.out.println("playlist berhasil dihapus.");
             } else {
                 System.out.println("playlist tidak ditemukan.");
