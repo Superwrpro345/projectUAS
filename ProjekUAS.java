@@ -277,7 +277,7 @@ public class ProjekUAS {
 
     static void keluar_program() {
         do {
-            System.out.print("\nApakah anda yakin untuk keluar (y/n)");
+            System.out.print("\nApakah anda yakin untuk keluar (y/n) : ");
             String out = key.nextLine();
             if (out.equalsIgnoreCase("y")) {
                 System.out.println("Terima Kasih untuk Menggunakan Aplikasi Kita");
