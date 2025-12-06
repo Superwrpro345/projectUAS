@@ -91,34 +91,39 @@ public class ProjekUAS {
         System.out.print("Cari playlist lagu: ");
         String cariplaylist = key.nextLine();
         boolean temuplaylist = false;
-        for (int i = 0; i < playlist.size(); i++) {
-            if (playlist.get(i).toLowerCase().contains(cariplaylist.toLowerCase())) {
-                System.out.println((i + 1) + ". " + playlist.get(i));
-                temuplaylist = true;
-                System.out.println("Daftar musik: ");
-                if (musik.isEmpty()) {
-                    System.out.println("Tidak ada musik");
-                } else {
-                    ArrayList<Integer> daftar = playlistLagu.get(i);
-                    if (daftar.isEmpty()) {
-                        System.out.println("Belum ada musik");
+        if (!temuplaylist) {
+            System.out.println("tidak temu playlist");
+        } else {
+            for (int i = 0; i < playlist.size(); i++) {
+                if (playlist.get(i).toLowerCase().contains(cariplaylist.toLowerCase())) {
+                    System.out.println((i + 1) + ". " + playlist.get(i));
+                    System.out.println("Daftar musik: ");
+                    if (musik.isEmpty()) {
+                        System.out.println("Tidak ada musik");
                     } else {
-                        for (int c = 0; c < daftar.size(); c++) {
-                            int index = daftar.get(c);
-                            System.out.println((c + 1) + ". " + musik.get(index));
+                        ArrayList<Integer> daftar = playlistLagu.get(i);
+                        if (daftar.isEmpty()) {
+                            System.out.println("Belum ada musik");
+                        } else {
+                            for (int c = 0; c < daftar.size(); c++) {
+                                int index = daftar.get(c);
+                                System.out.println((c + 1) + ". " + musik.get(index));
+                            }
                         }
                     }
                 }
             }
-        }
-        if (!temuplaylist) {
-            System.out.println("Playlist tidak tersedia");
         }
     }
 
     static void tambah_musik_ke_playlist() {
         if (playlist.isEmpty()) {
             System.out.println("tidak ada playlist lagu.");
+            return;
+        }
+
+        for (int i = 0; i < playlist.size(); i++) {
+            System.out.println((i + 1) + ". " + playlist.get(i));
         }
 
         System.out.print("Cari playlist lagu: ");
@@ -131,9 +136,14 @@ public class ProjekUAS {
                 break;
             }
         }
+
         System.out.println("Pilih Musik Yang Ingin ditambahkan");
         int pilihmusik = key.nextInt() - 1;
         key.nextLine();
+
+        for (int i = 0; i < musik.size(); i++) {
+            System.out.println((i + 1) + ". " + musik.get(i));
+        }
 
         if (pilihmusik <= 0 && pilihmusik >= musik.size()) {
             System.out.println("Musik Tidak Ditemukan");
@@ -145,6 +155,7 @@ public class ProjekUAS {
 
         playlistLagu.get(idxPlaylist).add(pilihmusik);
         System.out.println("Musik Berhasil Ditambahkan");
+
     }
 
     static void hapus_musik_dari_playlist() {
@@ -172,7 +183,7 @@ public class ProjekUAS {
         ArrayList<Integer> Select = playlistLagu.get(idPlaylist);
 
         if (Select.isEmpty()) {
-            System.out.println("Tidak Musik yang ingin dihapus");
+            System.out.println("Tidak ada Musik yang ingin dihapus");
         }
 
         System.out.println("Daftar Musik");
