@@ -202,20 +202,21 @@ public class ProjekUAS {
 
         if (Select.isEmpty()) {
             System.out.println("Tidak ada Musik yang ingin dihapus");
+            return;
         }
 
         System.out.println("Daftar Musik");
         for (int i = 0; i < Select.size(); i++) {
             int Idselect = Select.get(i);
-            System.out.println((i + 1) + ". " + Select.get(Idselect));
+            System.out.println((i + 1) + ". " + musik.get(Idselect));
         }
 
         System.out.println("Pilih musik yang ingin dihapus dari playlist");
         int Musikpilih = key.nextInt();
         key.nextLine();
 
-        if (Musikpilih >= 0 && Musikpilih <= Select.size()) {
-            Select.remove(Musikpilih);
+        if (Musikpilih >= 1 && Musikpilih <= Select.size()) {
+            Select.remove(Musikpilih - 1);
             System.out.println("Musik dalam playlist berhasil dihapus");
         } else {
             System.out.println("Musik Tidak ditemukan");
