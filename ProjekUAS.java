@@ -102,54 +102,32 @@ public class ProjekUAS {
         }
     }
 
-   static void cari_playlist() {
+    static void cari_playlist() {
         System.out.print("Cari playlist lagu: ");
         String cariplaylist = key.nextLine();
         boolean temuplaylist = false;
-<<<<<<< HEAD
-
-        for (int i = 0; i < playlist.size(); i++) {
-            if (playlist.get(i).toLowerCase().contains(cariplaylist.toLowerCase())) {
-                System.out.println((i + 1) + ". " + playlist.get(i));
-=======
         for (int i = 0; i < playlist.size(); i++) {
             if (playlist.get(i).toLowerCase().contains(cariplaylist.toLowerCase())) {
                 System.out.println((i + 1) + ". " + playlist.get(i));
                 temuplaylist = true;
->>>>>>> 1d06d14d8f0f42abaf4bddf2056c2a2cea471427
                 System.out.println("Daftar musik: ");
                 if (musik.isEmpty()) {
                     System.out.println("Tidak ada musik");
                 } else {
                     ArrayList<Integer> daftar = playlistLagu.get(i);
-<<<<<<< HEAD
-                    if (daftar.isEmpty()) {
-                        System.out.println("Belum ada musik");
-                    } else {
-                        for (int c = 0; c < daftar.size(); c++) {
-                            int index = daftar.get(c);
-                            System.out.println((c + 1) + ". " + musik.get(index));
-                        }
-
-=======
                     for (int c = 0; c < daftar.size(); c++) {
                         int index = daftar.get(c);
                         System.out.println((c + 1) + ". " + musik.get(index));
->>>>>>> 1d06d14d8f0f42abaf4bddf2056c2a2cea471427
                     }
                 }
             }
         }
         if (!temuplaylist) {
-<<<<<<< HEAD
-            System.out.println("tidak temu playlist");
-=======
             System.out.println("Playlist tidak tersedia");
->>>>>>> 1d06d14d8f0f42abaf4bddf2056c2a2cea471427
         }
     }
 
-   static void tambah_musik_ke_playlist() {
+    static void tambah_musik_ke_playlist() {
         if (playlist.isEmpty()) {
             System.out.println("tidak ada playlist lagu.");
             return;
