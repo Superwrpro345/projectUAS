@@ -236,11 +236,11 @@ public class ProjekUAS {
             key.nextLine();
             System.out.println("Masukkan input yang benar: ");
         }
-        int Musikpilih = key.nextInt();
+        int Musikpilih = key.nextInt() - 1;
         key.nextLine();
 
         if (Musikpilih > 0 && Musikpilih <= Select.size()) {
-            Select.remove(Musikpilih - 1);
+            Select.remove(Musikpilih);
             System.out.println("Musik dalam playlist berhasil dihapus");
         } else {
             System.out.println("Musik Tidak ditemukan");
