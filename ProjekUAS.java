@@ -104,6 +104,9 @@ public class ProjekUAS {
     }
 
     static void cari_playlist() {
+        for (int i = 0; i < playlist.size(); i++) {
+            System.out.println((i + 1) + ". " + playlist.get(i));
+        }
         System.out.print("Cari playlist lagu: ");
         String cariplaylist = key.nextLine();
         boolean temuplaylist = false;
@@ -194,11 +197,6 @@ public class ProjekUAS {
     }
 
     static void hapus_musik_dari_playlist() {
-        if (musik.isEmpty()) {
-            System.out.println("Tidak ada musik untuk dihapus.");
-            return;
-        }
-
         if (playlist.isEmpty()) {
             System.out.println("Tidak Ada Playlist");
             return;
