@@ -276,8 +276,9 @@ public class ProjekUAS {
             for (ArrayList<Integer> pl : playlistLagu) {
                 pl.removeIf(dpl -> dpl == finalDel);
                 for (int i = 0; i < pl.size(); i++) {
-                    if (pl.size() > finalDel) {
-                        pl.set(i, pl.get(i) - 1);
+                    int susun = pl.get(i);
+                    if (susun > finalDel) {
+                        pl.set(i, susun - 1);
                     }
                 }
             }
