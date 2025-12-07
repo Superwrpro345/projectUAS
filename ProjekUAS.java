@@ -187,7 +187,11 @@ public class ProjekUAS {
         for (int i = 0; i < playlist.size(); i++) {
             System.out.println((i + 1) + ". " + playlist.get(i));
         }
-
+        while (!key.hasNextInt()) {
+            System.out.println("Input invalid");
+            key.nextLine();
+            System.out.println("Masukkan input yang benar: ");
+        }
         int idPlaylist = key.nextInt() - 1;
         key.nextLine();
 
@@ -208,6 +212,11 @@ public class ProjekUAS {
         }
 
         System.out.println("Pilih daftar musik yang ingin dihapus");
+        while (!key.hasNextInt()) {
+            System.out.println("Input invalid");
+            key.nextLine();
+            System.out.println("Masukkan input yang benar: ");
+        }
         int Musikpilih = key.nextInt();
         key.nextLine();
 
@@ -234,8 +243,7 @@ public class ProjekUAS {
         System.out.print("Tambah lagu: ");
         String music = key.nextLine();
         musik.add(music);
-        System.out
-                .println(" musik berhasil ditambahkan.");
+        System.out.println(" musik berhasil ditambahkan.");
 
     }
 
