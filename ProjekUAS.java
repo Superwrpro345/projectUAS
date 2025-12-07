@@ -211,7 +211,7 @@ public class ProjekUAS {
         System.out.println("Daftar Musik");
         for (int i = 0; i < Select.size(); i++) {
             int Idselect = Select.get(i);
-            System.out.println((i + 1) + ". " + Select.get(Idselect));
+            System.out.println((i + 1) + ". " + musik.get(Idselect));
         }
 
         System.out.println("Pilih daftar musik yang ingin dihapus");
@@ -276,8 +276,9 @@ public class ProjekUAS {
             for (ArrayList<Integer> pl : playlistLagu) {
                 pl.removeIf(dpl -> dpl == finalDel);
                 for (int i = 0; i < pl.size(); i++) {
-                    if (pl.size() > finalDel) {
-                        pl.set(i, pl.get(i) - 1);
+                    int susun = pl.get(i);
+                    if (susun > finalDel) {
+                        pl.set(i, susun - 1);
                     }
                 }
             }
