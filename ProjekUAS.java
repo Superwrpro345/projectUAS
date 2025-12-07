@@ -102,32 +102,28 @@ public class ProjekUAS {
         }
     }
 
-    static void cari_playlist() {
+   static void cari_playlist() {
         System.out.print("Cari playlist lagu: ");
         String cariplaylist = key.nextLine();
         boolean temuplaylist = false;
-        if (!temuplaylist) {
-            System.out.println("tidak temu playlist");
-        } else {
-            for (int i = 0; i < playlist.size(); i++) {
-                if (playlist.get(i).toLowerCase().contains(cariplaylist.toLowerCase())) {
-                    System.out.println((i + 1) + ". " + playlist.get(i));
-                    System.out.println("Daftar musik: ");
-                    if (musik.isEmpty()) {
-                        System.out.println("Tidak ada musik");
-                    } else {
-                        ArrayList<Integer> daftar = playlistLagu.get(i);
-                        if (daftar.isEmpty()) {
-                            System.out.println("Belum ada musik");
-                        } else {
-                            for (int c = 0; c < daftar.size(); c++) {
-                                int index = daftar.get(c);
-                                System.out.println((c + 1) + ". " + musik.get(index));
-                            }
-                        }
+        for (int i = 0; i < playlist.size(); i++) {
+            if (playlist.get(i).toLowerCase().contains(cariplaylist.toLowerCase())) {
+                System.out.println((i + 1) + ". " + playlist.get(i));
+                temuplaylist = true;
+                System.out.println("Daftar musik: ");
+                if (musik.isEmpty()) {
+                    System.out.println("Tidak ada musik");
+                } else {
+                    ArrayList<Integer> daftar = playlistLagu.get(i);
+                    for (int c = 0; c < daftar.size(); c++) {
+                        int index = daftar.get(c);
+                        System.out.println((c + 1) + ". " + musik.get(index));
                     }
                 }
             }
+        }
+        if (!temuplaylist) {
+            System.out.println("Playlist tidak tersedia");
         }
     }
 
