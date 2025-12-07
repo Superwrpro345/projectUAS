@@ -94,6 +94,7 @@ public class ProjekUAS {
             key.nextLine();
             if (delMusika >= 0 && delMusika < playlist.size()) {
                 playlist.remove(delMusika);
+                playlistLagu.remove(delMusika);
                 System.out.println("playlist berhasil dihapus.");
             } else {
                 System.out.println("playlist tidak ditemukan.");
