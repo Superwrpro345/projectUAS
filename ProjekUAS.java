@@ -198,7 +198,6 @@ public class ProjekUAS {
         playlistLagu.get(idxPlaylist).add(pilihmusik);
         System.out.println("Musik Berhasil Ditambahkan");
     }
-
     static void hapus_musik_dari_playlist() {
         if (musik.isEmpty()) {
             System.out.println("Tidak ada musik untuk dihapus.");
