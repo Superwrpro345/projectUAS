@@ -131,46 +131,54 @@ public class ProjekUAS {
         }
     }
 
-    static void tambah_musik_ke_playlist() {
+   static void tambah_musik_ke_playlist() {
         if (playlist.isEmpty()) {
             System.out.println("tidak ada playlist lagu.");
             return;
         }
 
+        if (musik.isEmpty()) {
+            System.out.println("Belum ada lagu yang terdaftar.");
+            return;
+        }
+
+        System.out.println("\nDaftar Playlist:");
         for (int i = 0; i < playlist.size(); i++) {
             System.out.println((i + 1) + ". " + playlist.get(i));
         }
 
-        System.out.print("Cari playlist lagu: ");
-        String carilagu = key.nextLine();
+        System.out.print("Pilih playlist lagu : ");
+        int carilagu = key.nextInt() - 1;
         int idxPlaylist = -1;
 
-        for (int i = 0; i < playlist.size(); i++) {
-            if (playlist.get(i).equalsIgnoreCase(carilagu)) {
-                idxPlaylist = i;
-                break;
-            }
+        if (carilagu < 0 || carilagu >= playlist.size()) {
+            System.out.println("Playlist tidak ditemukan.");
+            return;
+        } else {
+            idxPlaylist = carilagu;
         }
 
-        System.out.println("Pilih Musik Yang Ingin ditambahkan");
-        int pilihmusik = key.nextInt() - 1;
-        key.nextLine();
-
+        System.out.println("Daftar Musik:");
         for (int i = 0; i < musik.size(); i++) {
             System.out.println((i + 1) + ". " + musik.get(i));
         }
 
-        if (pilihmusik <= 0 && pilihmusik >= musik.size()) {
-            System.out.println("Musik Tidak Ditemukan");
+        System.out.print("Pilih Nomor Musik Yang Ingin ditambahkan: ");
+        int pilihmusik = key.nextInt() - 1;
+        key.nextLine();
+
+        if (pilihmusik < 0 || pilihmusik >= musik.size()) {
+            System.out.println("Musik Tida Ditemukan");
+            return;
         }
 
         if (playlistLagu.get(idxPlaylist).contains(pilihmusik)) {
-            System.out.println("Musik yang ingin ditambahkan sudah ada dalam playlist tersebut");
+            System.out.println("Musik yang ingin ditambahin sudah ada dalam playlist tersebut");
+            return;
         }
 
         playlistLagu.get(idxPlaylist).add(pilihmusik);
         System.out.println("Musik Berhasil Ditambahkan");
-
     }
 
     static void hapus_musik_dari_playlist() {
