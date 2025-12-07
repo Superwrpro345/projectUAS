@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -90,11 +91,11 @@ public class ProjekUAS {
                 key.nextLine();
                 System.out.print("Silahkan Masukkan nomor playlist yang ingin dihapus: ");
             }
-            int delMusika = key.nextInt() - 1;
+            int delMusika = key.nextInt();
             key.nextLine();
-            if (delMusika >= 0 && delMusika < playlist.size()) {
-                playlist.remove(delMusika);
-                playlistLagu.remove(delMusika);
+            if (delMusika >= 1 && delMusika <= playlist.size()) {
+                playlistLagu.remove(delMusika - 1);
+                playlist.remove(delMusika - 1);
                 System.out.println("playlist berhasil dihapus.");
             } else {
                 System.out.println("playlist tidak ditemukan.");
@@ -102,27 +103,23 @@ public class ProjekUAS {
         }
     }
 
-   static void cari_playlist() {
+    static void cari_playlist() {
+        for (int i = 0; i < playlist.size(); i++) {
+            System.out.println((i + 1) + ". " + playlist.get(i));
+        }
         System.out.print("Cari playlist lagu: ");
         String cariplaylist = key.nextLine();
         boolean temuplaylist = false;
-<<<<<<< HEAD
 
         for (int i = 0; i < playlist.size(); i++) {
             if (playlist.get(i).toLowerCase().contains(cariplaylist.toLowerCase())) {
                 System.out.println((i + 1) + ". " + playlist.get(i));
-=======
-        for (int i = 0; i < playlist.size(); i++) {
-            if (playlist.get(i).toLowerCase().contains(cariplaylist.toLowerCase())) {
-                System.out.println((i + 1) + ". " + playlist.get(i));
-                temuplaylist = true;
->>>>>>> 1d06d14d8f0f42abaf4bddf2056c2a2cea471427
                 System.out.println("Daftar musik: ");
+                temuplaylist = true;
                 if (musik.isEmpty()) {
                     System.out.println("Tidak ada musik");
                 } else {
                     ArrayList<Integer> daftar = playlistLagu.get(i);
-<<<<<<< HEAD
                     if (daftar.isEmpty()) {
                         System.out.println("Belum ada musik");
                     } else {
@@ -130,81 +127,76 @@ public class ProjekUAS {
                             int index = daftar.get(c);
                             System.out.println((c + 1) + ". " + musik.get(index));
                         }
-
-=======
-                    for (int c = 0; c < daftar.size(); c++) {
-                        int index = daftar.get(c);
-                        System.out.println((c + 1) + ". " + musik.get(index));
->>>>>>> 1d06d14d8f0f42abaf4bddf2056c2a2cea471427
                     }
                 }
             }
         }
         if (!temuplaylist) {
-<<<<<<< HEAD
-            System.out.println("tidak temu playlist");
-=======
-            System.out.println("Playlist tidak tersedia");
->>>>>>> 1d06d14d8f0f42abaf4bddf2056c2a2cea471427
+            System.out.println("playlist tidak ditemukan");
         }
     }
 
-   static void tambah_musik_ke_playlist() {
+    static void tambah_musik_ke_playlist() {
         if (playlist.isEmpty()) {
             System.out.println("tidak ada playlist lagu.");
             return;
         }
 
-        if (musik.isEmpty()) {
-            System.out.println("Belum ada lagu yang terdaftar.");
-            return;
-        }
-
-        System.out.println("\nDaftar Playlist:");
         for (int i = 0; i < playlist.size(); i++) {
             System.out.println((i + 1) + ". " + playlist.get(i));
         }
-
-        System.out.print("Pilih playlist lagu : ");
-        int carilagu = key.nextInt() - 1;
+        System.out.println("==================");
+        System.out.print("Cari playlist lagu: ");
+        String carilagu = key.nextLine();
         int idxPlaylist = -1;
 
-        if (carilagu < 0 || carilagu >= playlist.size()) {
-            System.out.println("Playlist tidak ditemukan.");
-            return;
-        } else {
-            idxPlaylist = carilagu;
+        for (int i = 0; i < playlist.size(); i++) {
+            if (playlist.get(i).equalsIgnoreCase(carilagu)) {
+                idxPlaylist = i;
+                break;
+            }
         }
 
-        System.out.println("Daftar Musik:");
+        if (idxPlaylist == -1) {
+            System.out.println("Playlist tidak ditemukan");
+            return;
+        }
+        System.out.println("==================");
+
+        if (musik.isEmpty()) {
+            System.out.println("Silahkan Masukkan Musik terlebih dahulu");
+            return;
+        }
+
         for (int i = 0; i < musik.size(); i++) {
             System.out.println((i + 1) + ". " + musik.get(i));
         }
 
-        System.out.print("Pilih Nomor Musik Yang Ingin ditambahkan: ");
+        System.out.println("Pilih Musik Yang Ingin ditambahkan:");
+        while (!key.hasNextInt()) {
+            System.out.println("Input Invalid! Silahkan Masukkan Angka");
+            key.nextLine();
+            System.out.print("Silahkan Masukkan nomor musik yang ingin ditambahkan: ");
+        }
         int pilihmusik = key.nextInt() - 1;
         key.nextLine();
 
         if (pilihmusik < 0 || pilihmusik >= musik.size()) {
-            System.out.println("Musik Tida Ditemukan");
+            System.out.println("Musik Tidak Ditemukan");
             return;
         }
 
         if (playlistLagu.get(idxPlaylist).contains(pilihmusik)) {
-            System.out.println("Musik yang ingin ditambahin sudah ada dalam playlist tersebut");
+            System.out.println("Musik yang ingin ditambahkan sudah ada dalam playlist tersebut");
             return;
         }
 
         playlistLagu.get(idxPlaylist).add(pilihmusik);
         System.out.println("Musik Berhasil Ditambahkan");
+
     }
 
     static void hapus_musik_dari_playlist() {
-        if (musik.isEmpty()) {
-            System.out.println("Tidak ada musik untuk dihapus.");
-            return;
-        }
-
         if (playlist.isEmpty()) {
             System.out.println("Tidak Ada Playlist");
             return;
@@ -213,41 +205,42 @@ public class ProjekUAS {
         for (int i = 0; i < playlist.size(); i++) {
             System.out.println((i + 1) + ". " + playlist.get(i));
         }
-        while (!key.hasNextInt()) {
-            System.out.println("Input invalid");
-            key.nextLine();
-            System.out.println("Masukkan input yang benar: ");
+        System.out.println("==================");
+        System.out.print("Cari playlist lagu: ");
+        String carilagu = key.nextLine();
+        int idxPlaylist = -1;
+
+        for (int i = 0; i < playlist.size(); i++) {
+            if (playlist.get(i).equalsIgnoreCase(carilagu)) {
+                idxPlaylist = i;
+                break;
+            }
         }
-        int idPlaylist = key.nextInt() - 1;
-        key.nextLine();
 
-        if (idPlaylist < 0 || idPlaylist >= playlist.size()) {
-            System.out.println("Playlist Tidak Ditemukan");
+        if (idxPlaylist == -1) {
+            System.out.println("Playlist tidak ditemukan");
+            return;
         }
 
-        ArrayList<Integer> Select = playlistLagu.get(idPlaylist);
+        ArrayList<Integer> Select = playlistLagu.get(idxPlaylist);
 
-        if (Select.isEmpty()) {
+        if (playlistLagu.get(idxPlaylist).isEmpty()) {
             System.out.println("Tidak ada Musik yang ingin dihapus");
+            return;
         }
 
         System.out.println("Daftar Musik");
         for (int i = 0; i < Select.size(); i++) {
             int Idselect = Select.get(i);
-            System.out.println((i + 1) + ". " + Select.get(Idselect));
+            System.out.println((i + 1) + ". " + musik.get(Idselect));
         }
 
-        System.out.println("Pilih daftar musik yang ingin dihapus");
-        while (!key.hasNextInt()) {
-            System.out.println("Input invalid");
-            key.nextLine();
-            System.out.println("Masukkan input yang benar: ");
-        }
+        System.out.println("Pilih musik yang ingin dihapus dari playlist");
         int Musikpilih = key.nextInt();
         key.nextLine();
 
-        if (Musikpilih >= 0 && Musikpilih <= Select.size()) {
-            Select.remove(Musikpilih);
+        if (Musikpilih >= 1 && Musikpilih <= Select.size()) {
+            Select.remove(Musikpilih - 1);
             System.out.println("Musik dalam playlist berhasil dihapus");
         } else {
             System.out.println("Musik Tidak ditemukan");
@@ -269,32 +262,40 @@ public class ProjekUAS {
         System.out.print("Tambah lagu: ");
         String music = key.nextLine();
         musik.add(music);
-        System.out.println(" musik berhasil ditambahkan.");
+        System.out
+                .println(" musik berhasil ditambahkan.");
 
     }
 
     static void hapus_musik() {
-        if (musik.isEmpty()) {
-            System.out.println("Tidak ada musik untuk dihapus.");
+        System.out.print("Masukkan nama musik yang ingin dihapus: ");
+        String dele = key.nextLine();
+
+        int indexdelete = -1;
+
+        for (int i = 0; i < musik.size(); i++) {
+            if (musik.get(i).equalsIgnoreCase(dele)) {
+                indexdelete = i;
+                break;
+            }
+        }
+
+        if (indexdelete != -1) {
+            musik.remove(indexdelete);
+
+            final int finalIndexDelete = indexdelete;
+            for (ArrayList<Integer> pl : playlistLagu) {
+                pl.removeIf(index -> index == finalIndexDelete);
+
+                for (int i = 0; i < pl.size(); i++) {
+                    if (pl.get(i) > finalIndexDelete) {
+                        pl.set(i, pl.get(i) - 1);
+                    }
+                }
+            }
+            System.out.println("Musik Berhasil Dihapus");
         } else {
-            System.out.println("Daftar musik saat ini:");
-            for (int i = 0; i < musik.size(); i++) {
-                System.out.println((i + 1) + ". " + musik.get(i));
-            }
-            System.out.print("Masukkan nomor musik yang ingin dihapus: ");
-            while (!key.hasNextInt()) {
-                System.out.println("Input Invalid! Silahkan Masukkan Angka");
-                key.nextLine();
-                System.out.print("Silahkan Masukkan nomor musik yang ingin dihapus: ");
-            }
-            int delMusika = key.nextInt() - 1;
-            key.nextLine();
-            if (delMusika >= 0 && delMusika < musik.size()) {
-                musik.remove(delMusika);
-                System.out.println("Musik berhasil dihapus.");
-            } else {
-                System.out.println("Musik tidak ditemukan.");
-            }
+            System.out.println("Musik Tidak Berhasil Ditemukan");
         }
 
     }
