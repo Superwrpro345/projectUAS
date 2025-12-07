@@ -145,7 +145,7 @@ public class ProjekUAS {
 
         System.out.print("Pilih playlist lagu : ");
         int carilagu = key.nextInt() - 1;
-        int idxPlaylist = -1;
+        int idxPlaylist;
 
         if (carilagu < 0 || carilagu >= playlist.size()) {
             System.out.println("Playlist tidak ditemukan.");
@@ -176,6 +176,7 @@ public class ProjekUAS {
         playlistLagu.get(idxPlaylist).add(pilihmusik);
         System.out.println("Musik Berhasil Ditambahkan");
     }
+
     static void hapus_musik_dari_playlist() {
         if (musik.isEmpty()) {
             System.out.println("Tidak ada musik untuk dihapus.");
@@ -223,8 +224,8 @@ public class ProjekUAS {
         int Musikpilih = key.nextInt();
         key.nextLine();
 
-        if (Musikpilih >= 0 && Musikpilih <= Select.size()) {
-            Select.remove(Musikpilih);
+        if (Musikpilih > 0 && Musikpilih <= Select.size()) {
+            Select.remove(Musikpilih - 1);
             System.out.println("Musik dalam playlist berhasil dihapus");
         } else {
             System.out.println("Musik Tidak ditemukan");
