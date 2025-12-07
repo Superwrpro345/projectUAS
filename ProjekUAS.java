@@ -91,7 +91,7 @@ public class ProjekUAS {
                 key.nextLine();
                 System.out.print("Silahkan Masukkan nomor playlist yang ingin dihapus: ");
             }
-            int delMusika = key.nextInt()-1;
+            int delMusika = key.nextInt() - 1;
             key.nextLine();
             if (delMusika >= 0 && delMusika < playlist.size()) {
                 playlist.remove(delMusika);
@@ -261,7 +261,7 @@ public class ProjekUAS {
                 key.nextLine();
                 System.out.print("Silahkan Masukkan nomor musik yang ingin dihapus: ");
             }
-            int delMusika = key.nextInt()-1;
+            int delMusika = key.nextInt() - 1;
             key.nextLine();
             if (delMusika >= 0 && delMusika < musik.size()) {
                 musik.remove(delMusika);
@@ -272,10 +272,10 @@ public class ProjekUAS {
         }
 
     }
-    
+
     static void keluar_program() {
         do {
-            System.out.print("\nApakah anda yakin untuk keluar (y/n)");
+            System.out.print("\nApakah anda yakin untuk keluar (y/n) : ");
             String out = key.nextLine();
             if (out.equalsIgnoreCase("y")) {
                 System.out.println("Terima Kasih untuk Menggunakan Aplikasi Kita");
