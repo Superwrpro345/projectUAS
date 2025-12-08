@@ -239,8 +239,8 @@ public class ProjekUAS {
         int Musikpilih = key.nextInt() - 1;
         key.nextLine();
 
-        if (Musikpilih > 0 && Musikpilih <= Select.size()) {
-            Select.remove(Musikpilih);
+        if (Musikpilih > 0 && Musikpilih <= SelectedSong.size()) {
+            SelectedSong.remove(Musikpilih);
             System.out.println("Musik dalam playlist berhasil dihapus");
         } else {
             System.out.println("Musik Tidak ditemukan");
