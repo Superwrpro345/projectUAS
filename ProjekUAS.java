@@ -217,16 +217,16 @@ public class ProjekUAS {
             return;
         }
 
-        ArrayList<Integer> Select = playlistLagu.get(idPlaylist);
+        ArrayList<Integer> SelectedSong = playlistLagu.get(idPlaylist);
 
-        if (Select.isEmpty()) {
+        if (SelectedSong.isEmpty()) {
             System.out.println("Tidak ada Musik yang ingin dihapus");
             return;
         }
 
         System.out.println("Daftar Musik");
-        for (int i = 0; i < Select.size(); i++) {
-            int Idselect = Select.get(i);
+        for (int i = 0; i < SelectedSong.size(); i++) {
+            int Idselect = SelectedSong.get(i);
             System.out.println((i + 1) + ". " + musik.get(Idselect));
         }
 
@@ -285,19 +285,21 @@ public class ProjekUAS {
             if (delMusika >= 0 && delMusika < musik.size()) {
                 musik.remove(delMusika);
                 System.out.println("Musik berhasil dihapus.");
-                final int finalDel = delMusika;
-                for (ArrayList<Integer> pl : playlistLagu) {
-                    pl.removeIf(dpl -> dpl == finalDel);
-                    for (int i = 0; i < pl.size(); i++) {
-                        int susun = pl.get(i);
-                        if (susun > finalDel) {
-                            pl.set(i, susun - 1);
-                        }
-                    }
-                }
             } else {
                 System.out.println("Musik tidak ditemukan.");
+                return;
             }
+            final int finalDel = delMusika;
+            for (ArrayList<Integer> pl : playlistLagu) {
+                pl.removeIf(dpl -> dpl == finalDel);
+                for (int i = 0; i < pl.size(); i++) {
+                    int susun = pl.get(i);
+                    if (susun > finalDel) {
+                        pl.set(i, susun - 1);
+                    }
+                }
+            }
+
         }
     }
 
